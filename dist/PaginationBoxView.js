@@ -11,6 +11,7 @@ var PaginationBoxView = React.createClass({
     pageNum: React.PropTypes.number.isRequired,
     pageRangeDisplayed: React.PropTypes.number.isRequired,
     marginPagesDisplayed: React.PropTypes.number.isRequired,
+    total: React.PropTypes.number,
     previousLabel: React.PropTypes.node,
     nextLabel: React.PropTypes.node,
     breakLabel: React.PropTypes.node,
@@ -34,6 +35,7 @@ var PaginationBoxView = React.createClass({
       pageNum: 10,
       pageRangeDisplayed: 2,
       marginPagesDisplayed: 3,
+      total: undefined,
       activeClassName: "selected",
       previousClassName: "previous",
       nextClassName: "next",
@@ -115,6 +117,12 @@ var PaginationBoxView = React.createClass({
           { href: '', className: this.props.nextLinkClassName },
           this.props.nextLabel
         )
+      ),
+      this.props.total !== undefined && React.createElement(
+        'li',
+        { style: { float: 'right', width: 'auto' } },
+        'Total rows: ',
+        this.props.total
       )
     );
   },
